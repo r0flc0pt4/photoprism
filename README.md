@@ -1,6 +1,8 @@
 PhotoPrism: Browse your life in pictures
 ========================================
 
+[![GuardRails badge](https://badges.production.guardrails.io/r0flc0pt4/photoprism.svg)](https://www.guardrails.io)
+
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)][license]
 [![Code Quality](https://goreportcard.com/badge/github.com/photoprism/photoprism)][code quality]
 [![Build Status](https://travis-ci.org/photoprism/photoprism.png?branch=master)][ci]
