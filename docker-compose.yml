@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+  photoprism:
+    build: .
+    image: photoprism/photoprism
+    command: tail -f /dev/null
+    ports:
+      - 2342:80
+    volumes:
+      - .:/go/src/github.com/photoprism/photoprism
+    environment:
+      PHOTOPRISM_DEBUG: "true"
+      PHOTOPRISM_SERVER_MODE: "debug"
+      PHOTOPRISM_ASSETS_PATH: "/go/src/github.com/photoprism/photoprism/assets"
+      PHOTOPRISM_THUMBNAILS_PATH: "/go/src/github.com/photoprism/photoprism/assets/thumbnails"
+      PHOTOPRISM_IMPORT_PATH: "/go/src/github.com/photoprism/photoprism/assets/photos/import"
+      PHOTOPRISM_EXPORT_PATH: "/go/src/github.com/photoprism/photoprism/assets/photos/export"
+      PHOTOPRISM_ORIGINALS_PATH: "/go/src/github.com/photoprism/photoprism/assets/photos/originals"
+
+  database:
+    image: mysql:latest
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --max-connections=1024
+    ports:
+      - 13306:3306
+    volumes:
+      - photoprism-database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: photoprism
+      MYSQL_USER: photoprism
+      MYSQL_PASSWORD: photoprism
+      MYSQL_DATABASE: photoprism
+
+volumes: # keep this
+  photoprism-database:
+    driver: local

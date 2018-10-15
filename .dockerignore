@@ -1,0 +1,9 @@
+assets/photos/*
+assets/thumbnails/*
+internal/photoprism/testdata/*
+frontend/node_modules/*
+assets/public/build/*
+Dockerfile
+/photoprism
+docker-compose*
+.travis.yml
